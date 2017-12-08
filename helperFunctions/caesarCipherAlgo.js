@@ -62,6 +62,7 @@ let bruteForce = (string) => {
 
 module.exports.encrypt = encrypt;
 module.exports.decrypt = decrypt;
+module.exports.bruteForce = bruteForce;
 
 
 

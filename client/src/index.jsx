@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM  from 'react-dom';
-import Dropdown from 'react-dropdown';
+// import Dropdown from 'react-dropdown';
 import Message from './components/message.jsx';
 import UserInput from './components/userInput.jsx';
+import ShiftKeyComponent from './components/shiftKey.jsx';
 import cipher from '../../helperFunctions/caesarCipherAlgo.js'
+import { MenuItem, DropdownButton, InputGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
+
 
 const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 , 26]
 // const options = ['1', 2, 3]
@@ -15,6 +18,7 @@ export default class App extends Component {
 			userMessage: '',
 			encryptedMessage: '',
 			decryptedMessage: '',
+			bruteForceMessage: '',
 			shiftKey: '',
 		}
 		this.encrypt = this.encrypt.bind(this);
@@ -60,7 +64,7 @@ export default class App extends Component {
 
 	bruteForce(message) {
 		this.setState({
-			encryptedMessage: cipher.bruteForce(message)
+			bruteForceMessage: cipher.bruteForce(message)
 		})
 	}
 
@@ -74,13 +78,15 @@ export default class App extends Component {
     			encrypt={this.encrypt}
     			decrypt={this.decrypt}
     			bruteForce={this.bruteForce}
+    			encryptedMessage={this.state.encryptedMessage}
     		/>
-    		<Dropdown options={options} onChange={this.onKeyChange} value={this._onSelect} placeholder="Select an shift number" />
+    		<ShiftKeyComponent />
     		<Message 
     			userMessage={this.state.userMessage}
     			encryptedMessage={this.state.encryptedMessage}
     			decryptedMessage={this.state.decryptedMessage}
     			shiftKey={this.state.shiftKey}
+    			bruteForceMessage={this.state.bruteForceMessage}
     		/>
     	</div>
 
