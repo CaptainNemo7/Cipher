@@ -7,7 +7,7 @@ class UserInput extends React.Component {
 		super(props)
 		this.state = {
 			message: '',
-			encryptedMessage: '',
+			cryptMessage: '',
 		}
 		this.changeMessageHandler = this.changeMessageHandler.bind(this)
 		this.changeEncryptedMessageHandler = this.changeEncryptedMessageHandler.bind(this)
@@ -21,7 +21,7 @@ class UserInput extends React.Component {
 
 	changeEncryptedMessageHandler(e) {
 		this.setState({
-			encryptedMessage: e.target.value
+			cryptMessage: e.target.value
 		})
 	}
 
@@ -29,22 +29,25 @@ class UserInput extends React.Component {
 		
 		this.props.userInput(this.state.message)
 		this.props.encrypt(this.state.message, this.props.shiftKey)
-		this.setState({
-			encryptedMessage: this.props.encryptedMessage
-		})
+		console.log('on the click :',this.props.encryptedMessage)
+		// this.setState({
+		// 	cryptMessage: this.props.encryptedMessage
+		// })
 	}
 
 	onClickDecrypt() {
-		this.props.userInput(this.state.encryptedMessage)
-		this.props.decrypt(this.state.encryptedMessage, this.props.shiftKey)
+		this.props.userInput(this.props.encryptedMessage)
+		this.props.decrypt(this.props.encryptedMessage, this.props.shiftKey)
 	}
 
 	onClickBruteForce() {
-		this.props.userInput(this.state.encryptedMessage)
-		this.props.bruteForce(this.state.encryptedMessage)
+		console.log(this.props.encryptedMessage)
+		this.props.userInput(this.props.encryptedMessage)
+		this.props.bruteForce(this.props.encryptedMessage)
 	}
 
 	render() {
+		console.log('mess',this.state.cryptMessage)
 		return (
 			<div>
 				<form>
@@ -64,7 +67,7 @@ class UserInput extends React.Component {
 	    	<form>
 					<FormGroup>
 					<FormControl placeholder='enter encrypted message here'
-						value={this.state.encryptedMessage}
+						value={this.state.cryptMessage}
 						onChange={this.changeEncryptedMessageHandler}
 					/>
 					</FormGroup>

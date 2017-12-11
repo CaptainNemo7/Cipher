@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM  from 'react-dom';
-// import Dropdown from 'react-dropdown';
 import Message from './components/message.jsx';
 import UserInput from './components/userInput.jsx';
 import ShiftKeyComponent from './components/shiftKey.jsx';
@@ -8,9 +7,6 @@ import cipher from '../../helperFunctions/caesarCipherAlgo.js'
 import { MenuItem, DropdownButton, InputGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
 
 
-const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 , 26]
-// const options = ['1', 2, 3]
-const defaultOption = options[1]
 export default class App extends Component {
 	constructor(props) {
 		super(props);
@@ -19,9 +15,9 @@ export default class App extends Component {
 			encryptedMessage: '',
 			decryptedMessage: '',
 			bruteForceMessage: '',
-			shiftKey: '',
+			shiftKey: 1,
 		}
-		this.encrypt = this.encrypt.bind(this);
+		this.encryptor = this.encryptor.bind(this);
 		this.decrypt = this.decrypt.bind(this);
 		this.bruteForce = this.bruteForce.bind(this);
 		this.userInput = this.userInput.bind(this);
@@ -37,21 +33,23 @@ export default class App extends Component {
 
 	}
 
-	encrypt(message, {key = this.state.shiftKey}) {
-		console.log('message in encrypt func index: ',  message)
+	encryptor(message, {key = this.state.shiftKey}) {
+		// console.log('message in encrypt func index: ',  message)
 		// key = 2
 		console.log('key in encrypt func index: ',  key)
-		console.log('encrypted message: ',cipher.encrypt(message, key))
+		// console.log('encrypted message: ',cipher.encrypt(message, key))
 		// let encrypted = cipher.encrypt(messsage, key);
 		// console.log('encrypted message : ',encrypted)
 		this.setState({
 			encryptedMessage: cipher.encrypt(message, key)
 		})
+		// console.log(this.state.encryptedMessage)
 	}
 
 	onKeyChange(e) {
+		console.log(e)
 		this.setState({
-			shiftKey: e.value
+			shiftKey: e
 		})
 		console.log('after: ',this.state.shiftKey)
 	}
@@ -75,12 +73,14 @@ export default class App extends Component {
     		<UserInput
     			userInput={this.userInput}
     			shiftKey={this.state.shiftKey}
-    			encrypt={this.encrypt}
+    			encrypt={this.encryptor}
     			decrypt={this.decrypt}
     			bruteForce={this.bruteForce}
     			encryptedMessage={this.state.encryptedMessage}
     		/>
-    		<ShiftKeyComponent />
+    		<ShiftKeyComponent 
+    			onKeyChange={this.onKeyChange}
+    		/>
     		<Message 
     			userMessage={this.state.userMessage}
     			encryptedMessage={this.state.encryptedMessage}
