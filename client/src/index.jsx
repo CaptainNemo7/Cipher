@@ -40,7 +40,6 @@ export default class App extends Component {
 	}
 
 	onKeyChange(e) {
-		console.log(e)
 		this.setState({
 			shiftKey: e
 		})

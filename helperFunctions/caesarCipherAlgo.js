@@ -54,7 +54,7 @@ let decrypt = (string, number) => {
 let bruteForce = (string) => {
 	let possibleAnswers =[];
 	for( let i = 1; i <= 26; i++ ) {
-		possibleAnswers.push("With the cipher key number " + i + ", we get: " + decrypt(string, i));
+		possibleAnswers.push('Key '+ i + ': ' + decrypt(string, i));
 	}
 	return possibleAnswers;
 }

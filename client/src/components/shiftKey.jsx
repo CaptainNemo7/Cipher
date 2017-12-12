@@ -38,7 +38,7 @@ class ShiftKey extends React.Component {
 			 					return item;
 			 				})}
 			    	</DropdownButton>
-			    	<h3>Encryption Key: {this.props.shiftKey}</h3>
+			    	<h2>Encryption Key: {this.props.shiftKey}</h2>
 			    </Col>
 	    	</Row>
 	    </Grid>
