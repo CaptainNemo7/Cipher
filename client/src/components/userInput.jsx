@@ -39,13 +39,13 @@ class UserInput extends React.Component {
 	}
 
 	onClickDecrypt() {
-		this.props.userInput(this.props.encryptedMessage)
-		this.props.decrypt(this.props.encryptedMessage, this.props.shiftKey)
+		this.props.userInput(this.state.cryptMessage)
+		this.props.decrypt(this.state.cryptMessage, this.props.shiftKey)
 	}
 
 	onClickBruteForce() {
-		this.props.userInput(this.props.encryptedMessage)
-		this.props.bruteForce(this.props.encryptedMessage)
+		this.props.userInput(this.state.cryptMessage)
+		this.props.bruteForce(this.state.cryptMessage)
 	}
 
 	render() {
