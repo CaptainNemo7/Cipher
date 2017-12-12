@@ -8,11 +8,11 @@ const Message = (props) => {
 			<Grid id="messageGrid">
 				<Row className="show-grid">
 					<Col xs={6} md={6}>
-						<div id="message">Encrypted Message: {props.encryptedMessage}</div>
+						<div id="message"><h4><b>Encrypted Message:</b></h4> {props.encryptedMessage}</div>
 
 					</Col>
 					<Col xs={6} md={6}>
-						<div id="message"> Decrypted Message: {props.decryptedMessage}</div>
+						<div id="message"> <h4><b>Decrypted Message:</b></h4> {props.decryptedMessage}</div>
 
 					</Col>
 	    	</Row>
@@ -20,7 +20,13 @@ const Message = (props) => {
 	    <Grid >
 				<Row className="show-grid">
 					<Col xs={12} md={12}xsOffset={0}>
-						<div id="message">Brute Forced: {props.bruteForceMessage}</div>
+					<div id="message"><h4><b>Brute Forced:</b></h4>
+						{ props.bruteForceMessage.length > 0 ? 
+							props.bruteForceMessage.map((item) => {
+							return <div>{item}</div>
+							})  : <div></div>
+							
+						}</div>
 					</Col>
 	    	</Row>
 	    </Grid>

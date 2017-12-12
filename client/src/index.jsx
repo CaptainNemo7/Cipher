@@ -34,16 +34,9 @@ export default class App extends Component {
 	}
 
 	encryptor(message, {key = this.state.shiftKey}) {
-		// console.log('message in encrypt func index: ',  message)
-		// key = 2
-		console.log('key in encrypt func index: ',  key)
-		// console.log('encrypted message: ',cipher.encrypt(message, key))
-		// let encrypted = cipher.encrypt(messsage, key);
-		// console.log('encrypted message : ',encrypted)
 		this.setState({
 			encryptedMessage: cipher.encrypt(message, key)
 		})
-		// console.log(this.state.encryptedMessage)
 	}
 
 	onKeyChange(e) {
@@ -51,7 +44,6 @@ export default class App extends Component {
 		this.setState({
 			shiftKey: e
 		})
-		console.log('after: ',this.state.shiftKey)
 	}
 
 	decrypt(message, {key = this.state.shiftKey}) {

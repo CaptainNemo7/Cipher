@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MenuItem, DropdownButton, InputGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
+import { Grid, Col, Row, MenuItem, DropdownButton, InputGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
 
 class ShiftKey extends React.Component {
 	constructor(props) {
@@ -24,17 +24,25 @@ class ShiftKey extends React.Component {
 	render() {
 		return (
 			<div>
-			<DropdownButton 
-				title="Key" 
-				id="shiftKeySelector"
-				class="dropdown-menu"
-				onSelect={(e)=> {this.props.onKeyChange(e)}}
-			>
- 				{this.shiftKeyRender().map((item) => {
- 					return item;
- 				})}
-    	</DropdownButton>
-    	<h4>Encryption Key: {this.props.shiftKey}</h4>
+			<Grid id="messageGrid">
+				<Row className="show-grid">
+					<Col xs={6} md={6}>
+					
+						<DropdownButton 
+							title="Key" 
+							id="shiftKeySelector"
+							class="dropdown-menu"
+							onSelect={(e)=> {this.props.onKeyChange(e)}}
+						>
+			 				{this.shiftKeyRender().map((item) => {
+			 					return item;
+			 				})}
+			    	</DropdownButton>
+			    	<h3>Encryption Key: {this.props.shiftKey}</h3>
+			    </Col>
+	    	</Row>
+	    </Grid>
+    	
     	</div>
 		)
 	}

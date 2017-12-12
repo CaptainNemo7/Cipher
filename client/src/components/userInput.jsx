@@ -35,10 +35,7 @@ class UserInput extends React.Component {
 		
 		this.props.userInput(this.state.message)
 		this.props.encrypt(this.state.message, this.props.shiftKey)
-		console.log('on the click :',this.props.encryptedMessage)
-		// this.setState({
-		// 	cryptMessage: this.props.encryptedMessage
-		// })
+
 	}
 
 	onClickDecrypt() {
