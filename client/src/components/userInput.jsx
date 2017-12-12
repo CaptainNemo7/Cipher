@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InputGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
+import { Grid, Row, Col, InputGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
 
 class UserInput extends React.Component {
 	constructor(props) {
@@ -25,6 +25,12 @@ class UserInput extends React.Component {
 		})
 	}
 
+	// handleChange(e, type) {
+	// 	this.setState({
+	// 		type: e.target.value
+	// 	})
+	// }
+
 	onClickEncrypt() {
 		
 		this.props.userInput(this.state.message)
@@ -41,15 +47,16 @@ class UserInput extends React.Component {
 	}
 
 	onClickBruteForce() {
-		console.log(this.props.encryptedMessage)
 		this.props.userInput(this.props.encryptedMessage)
 		this.props.bruteForce(this.props.encryptedMessage)
 	}
 
 	render() {
-		console.log('mess',this.state.cryptMessage)
 		return (
 			<div>
+			<Grid>
+				<Row className="show-grid">
+				<Col xs={6} md={6}>
 				<form>
 					<FormGroup>
 					<FormControl placeholder='enter message here'
@@ -64,6 +71,8 @@ class UserInput extends React.Component {
 	    		
 	    		block
 	    	>Encrypt</Button>
+	    	</Col>
+	    	<Col xs={6} md={6}>
 	    	<form>
 					<FormGroup>
 					<FormControl placeholder='enter encrypted message here'
@@ -83,7 +92,11 @@ class UserInput extends React.Component {
 	    		bsStyle='danger'
 	    		block
 	    	>Brute Force</Button>
+	    	</Col>
+	    	</Row>
+	    </Grid>
 			</div>
+
 		)
 	}
 }

@@ -70,6 +70,7 @@ export default class App extends Component {
   render() {
     return (
     	<div>
+    		
     		<UserInput
     			userInput={this.userInput}
     			shiftKey={this.state.shiftKey}
@@ -80,6 +81,7 @@ export default class App extends Component {
     		/>
     		<ShiftKeyComponent 
     			onKeyChange={this.onKeyChange}
+    			shiftKey={this.state.shiftKey}
     		/>
     		<Message 
     			userMessage={this.state.userMessage}
