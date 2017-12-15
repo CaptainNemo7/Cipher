@@ -1,7 +1,7 @@
 {
-  "name": "Caesar Cipher",
+  "name": "CaesarCipher",
   "version": "1.0.0",
-  "description": "Caesar Cipher made to encrypt, decrypt and break messages",
+  "description": "Encrypts, decrypts and breaks messages",
   "main": "index.js",
   "scripts": {
     "compile": "webpack --watch",
