@@ -9,7 +9,8 @@
     "server-dev": "nodemon server",
     "start": "npm run compile & npm run server-dev",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "postinstall": "webpack"
   },
   "author": "",
   "license": "ISC",
