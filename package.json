@@ -1,9 +1,8 @@
 {
-  "name": "redux-simple-starter",
+  "name": "Caesar Cipher",
   "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "Caesar Cipher made to encrypt, decrypt and break messages",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
     "compile": "webpack --watch",
     "server-dev": "nodemon server",
@@ -40,6 +39,7 @@
     "react-redux": "4.3.0",
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
-    "webpack": "^1.12.9"
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }
