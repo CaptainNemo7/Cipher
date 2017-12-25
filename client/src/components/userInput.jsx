@@ -3,99 +3,88 @@ import ReactDOM from 'react-dom';
 import { Grid, Row, Col, InputGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
 
 class UserInput extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			message: '',
-			cryptMessage: '',
-		}
-		this.changeMessageHandler = this.changeMessageHandler.bind(this)
-		this.changeEncryptedMessageHandler = this.changeEncryptedMessageHandler.bind(this)
-	}
+  constructor(props) {
+    super(props)
+    this.state = {
+      message: '',
+      cryptMessage: '',
+    }
+    this.changeMessageHandler = this.changeMessageHandler.bind(this)
+    this.changeEncryptedMessageHandler = this.changeEncryptedMessageHandler.bind(this)
+  }
 
-	changeMessageHandler(e) {
-		this.setState({
-			message: e.target.value
-		})
-	}
+  changeMessageHandler(e) {
+    this.setState({
+      message: e.target.value
+    })
+  }
 
-	changeEncryptedMessageHandler(e) {
-		this.setState({
-			cryptMessage: e.target.value
-		})
-	}
+  changeEncryptedMessageHandler(e) {
+    this.setState({
+      cryptMessage: e.target.value
+    })
+  }
 
-	// handleChange(e, type) {
-	// 	this.setState({
-	// 		type: e.target.value
-	// 	})
-	// }
+  onClickEncrypt() {
+    this.props.userInput(this.state.message)
+    this.props.encrypt(this.state.message, this.props.shiftKey)
+  }
 
-	onClickEncrypt() {
-		
-		this.props.userInput(this.state.message)
-		this.props.encrypt(this.state.message, this.props.shiftKey)
+  onClickDecrypt() {
+    this.props.userInput(this.state.cryptMessage)
+    this.props.decrypt(this.state.cryptMessage, this.props.shiftKey)
+  }
 
-	}
+  onClickBruteForce() {
+    this.props.userInput(this.state.cryptMessage)
+    this.props.bruteForce(this.state.cryptMessage)
+  }
 
-	onClickDecrypt() {
-		this.props.userInput(this.state.cryptMessage)
-		this.props.decrypt(this.state.cryptMessage, this.props.shiftKey)
-	}
-
-	onClickBruteForce() {
-		this.props.userInput(this.state.cryptMessage)
-		this.props.bruteForce(this.state.cryptMessage)
-	}
-
-	render() {
-		return (
-			<div>
-			<Grid>
-				<Row className="show-grid">
-				<Col xs={6} md={6}>
-				<form>
-					<FormGroup>
-					<FormControl placeholder='enter message here'
-						value={this.state.message}
-						onChange={this.changeMessageHandler}
-					/>
-					</FormGroup>
-				</form>
-	    	<Button 
-	    		onClick={()=> {this.onClickEncrypt()}}
-	    		bsStyle='success'
-	    		
-	    		block
-	    	>Encrypt</Button>
-	    	</Col>
-	    	<Col xs={6} md={6}>
-	    	<form>
-					<FormGroup>
-					<FormControl placeholder='enter encrypted message here'
-						value={this.state.cryptMessage}
-						onChange={this.changeEncryptedMessageHandler}
-					/>
-					</FormGroup>
-				</form>
-
-	    	<Button
-	    		onClick={() => {this.onClickDecrypt()}}
-	    		bsStyle='warning'
-	    		block
-	    	>Decrypt</Button>
-	    	<Button
-	    		onClick={() => {this.onClickBruteForce()}}
-	    		bsStyle='danger'
-	    		block
-	    	>Brute Force</Button>
-	    	</Col>
-	    	</Row>
-	    </Grid>
-			</div>
-
-		)
-	}
+  render() {
+    return (
+      <div>
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={6} md={6}>
+              <form>
+                <FormGroup>
+                  <FormControl placeholder='enter message here'
+                    value={this.state.message}
+                    onChange={this.changeMessageHandler}
+                  />
+                </FormGroup>
+              </form>
+              <Button 
+                onClick={()=> {this.onClickEncrypt()}}
+                bsStyle='success'
+                block
+              >Encrypt</Button>
+            </Col>
+            <Col xs={6} md={6}>
+              <form>
+                <FormGroup>
+                  <FormControl placeholder='enter encrypted message here'
+                    value={this.state.cryptMessage}
+                    onChange={this.changeEncryptedMessageHandler}
+                  />
+                </FormGroup>
+              </form>
+              <Button
+                onClick={() => {this.onClickDecrypt()}}
+                bsStyle='warning'
+                block
+              >Decrypt</Button>
+              <Button
+                onClick={() => {this.onClickBruteForce()}}
+                bsStyle='danger'
+                block
+              >Brute Force</Button>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    )
+  }
 }
 
 export default UserInput;
